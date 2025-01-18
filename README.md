@@ -20,11 +20,11 @@ This project automated financial statement analysis by extracting key metrics fr
 
 ## Overview
 
-The project aims to automate the extraction of financial metrics from PDF financial statements and generate summaries highlighting key metrics such as:
-- Revenue
-- Net Income
-- Operating Expenses
-- Cash Flow
+This project aims to build an **end-to-end pipeline** for **financial data extraction**, **key metric retrieval**, **summary generation**, and **evaluation**. Specifically, it aims to:
+- **Extract** structured information from raw or partially structured financial statements (PDFs).
+- **Identify and convert** core financial metrics (e.g., revenue, net income) into numeric values, ensuring accuracy.
+- **Generate** a concise **narrative summary** describing the organization’s financial health, supported by relevant data.
+- **Evaluate** the effectiveness of each step (data extraction, metric accuracy, and summary quality) using a set of performance metrics (e.g., partial precision/recall, MAE, RMSE, exact-match F1).
 
 It employs **LangChain**, **OpenAI**, and other NLP techniques for accurate and efficient processing.
 
@@ -32,9 +32,9 @@ It employs **LangChain**, **OpenAI**, and other NLP techniques for accurate and 
 
 ## Features
 
-- **PDF Text Extraction**: Converts PDF documents into structured JSON data.
+- **PDF Text Extraction**: Converts PDF documents into structured data.
 - **Data Cleaning**: Fixes syntax issues and prepares data for further analysis.
-- **Metric Extraction**: Identifies and extracts financial metrics using LangChain.
+- **Metric Extraction**: Identifies and extracts financial metrics using LLM.
 - **Summary Generation**: Produces narrative financial summaries.
 - **Evaluation**: Measures extraction accuracy and summary quality using BLEU, ROUGE, BERTScore, and LLM-based evaluations.
 
@@ -47,13 +47,13 @@ project/
 │
 ├── src/
 │   ├── data_ingestion.py       # Handles PDF text extraction.
-│   ├── data_processing.py      # Processes extracted text into structured JSON.
+│   ├── data_processing.py      # Processes extracted text into structured data.
 │   ├── data_evaluation.py      # Evaluates data extraction and summaries.
-│   ├── reports.py              # Generates Excel reports and summaries.
+│   ├── reports.py              # Extract financial metrics and Generates reports and summaries.
 │   ├── config.py               # Configuration settings.
 │
 ├── raw_texts/                  # Folder for raw extracted text from PDFs.
-├── pdfs_data/                  # Folder for processed JSON data.
+├── pdfs_data/                  # Folder for processed data.
 ├── reports/                    # Folder for reports (e.g., Excel, summaries).
 ├── pdfs/                       # Input PDF files.
 │
@@ -74,7 +74,7 @@ project/
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo-name.git
+   git clone https://github.com/xuwx66/Financial-Statement-Analysis.git
    cd project
    ```
 
@@ -97,27 +97,175 @@ project/
 Place your financial statement PDFs in the `pdfs/` folder.
 
 ### 2. Extract Data from PDFs
-Run the `data_ingestion.py` script to extract raw text:
-```bash
-python src/data_ingestion.py
+Run `DataIngestion` from `data_ingestion.py` script to extract raw text:
+
+#### Extract Text from a Single PDF File
+```python
+from data_ingestion import DataIngestion
+
+DI = DataIngestion()
+pdf_path = "./pdfs/your_pdf_file.pdf"
+DI.extract_text_from_pdf(pdf_path)
+```
+
+#### Extract Text from PDFs in a List
+```python
+DI = DataIngestion()
+pdf_path_list = [
+    "./pdfs/your_pdf_file1.pdf",
+    "./pdfs/your_pdf_file2.pdf",
+]
+DI.extract_text_from_pdf_list(pdf_path_list)
+```
+
+#### Extract Text from All PDFs in a Folder
+```python
+DI = DataIngestion()
+DI.extract_text_from_pdf_folder(pdf_folder_path="./pdfs")
+DI.extract_text_from_pdf_folder()
 ```
 
 ### 3. Process Extracted Data
-Convert the raw text into structured JSON using `data_processing.py`:
-```bash
-python src/data_processing.py
+Convert the raw text into structured output using `DataProcessing` from `data_processing.py`:
+
+#### Process Extracted Text from a Single Folder
+```python
+from data_processing import DataProcessing
+
+DP = DataProcessing()
+input_text_folder = "./raw_texts/your_file"
+DP.data_processing(input_text_folder)
+```
+
+#### Process Extracted Text from a List of Folders
+```python
+DP = DataProcessing()
+input_text_folder_list = ["./raw_texts/your_file"]
+DP.data_processing_list(input_text_folder_list)
+```
+
+#### Process All Extracted Text
+```python
+DP = DataProcessing()
+DP.data_processing_all()
 ```
 
 ### 4. Generate Reports
-Use the `reports.py` script to generate Excel reports and summaries:
-```bash
-python src/reports.py
+Use the `Reports` from `reports.py` script to extract metrics, generate reports and summaries:
+
+#### Extracted all financial metrics in a tabular format (excel)
+```python
+from reports import Reports
+input_file = "./pdfs_data/your_file.json"
+RP = Reports()
+RP.save_to_excel_all(input_file_path=input_file, report_path="./reports")
+```
+
+#### Extract Financial Metrics into CSV
+```python
+from langchain.output_parsers import ResponseSchema
+from reports import Reports
+input_file = "./pdfs_data/your_file.json"
+metrics_schemas = [
+    ResponseSchema(name="Revenue Last Year", description="Total revenue recognized in Last Year"),
+    ResponseSchema(name="Revenue Previous Year", description="Total revenue recognized in Previous Year"),
+    ResponseSchema(name="Net Income Last Year", description="Net income after taxes in Last Year"),
+    ResponseSchema(name="Net Income Previous Year", description="Net income after taxes in Previous Year")
+]
+output_file = "./reports/key_metrics.csv"
+RP = Reports()
+key_metrics = RP.extract_financial_metrics(
+   metrics_schemas=metrics_schemas,
+   data_input=input_file,
+   csv_file=output_file
+)
+```
+
+#### Generate Summary Report
+```python
+from rich.markdown import Markdown
+input_file="./pdfs_data/fwc_sample_financial_statement.json"
+output_summary_file="./reports/financial_summary.txt"
+RP=Reports()
+financial_statements=RP.extract_data_from_json(input_file)
+financial_summary=RP.generate_financial_summary(
+    key_metrics=key_metrics, 
+    financial_data=financial_statements,
+    add_request=None,
+    output_file=output_summary_file
+)
+```
+
+#### Relevant Info/Data retrieval for `Large statements`
+```python
+input_file="./pdfs_data/Large_statements.json"
+specific_request="add if you have..."
+RP=Reports()
+financial_statements=RP.extract_data_from_json(input_file)
+RP.build_vector_store(input_data=financial_statements)
+relevant_data=RP.financial_data_retriever(user_query=specific_request)
 ```
 
 ### 5. Evaluate the Solution
-Run `data_evaluation.py` to evaluate the data extraction and summary generation:
-```bash
-python src/data_evaluation.py
+Run `DataEvaluation` from `data_evaluation.py` to evaluate the data extraction and summary generation:
+
+#### Data extraction Evaluation
+```python
+extracted_data_file="./pdfs_data/your_file.json"
+ground_truth_data={
+    "Revenue": {"Membership subscriptions": {"Last Year": 6748000, "Previous Year": 6571000}, 
+    "Interest": {"Last Year": 251000, "Previous Year": 231000}, 
+    "Rental income": {"Last Year": 185000, "Previous Year": 244000}, 
+    "Other revenue": {"Notes": "3A", "Last Year": 613000, "Previous Year": 655000}, 
+    "Total revenue": {"Last Year": 7797000, "Previous Year": "xxxxxx"}} 
+}
+
+DE=DataEvaluation()
+eval_data_extraction=DE.evaluate_data_extraction(
+   extracted_data=extracted_data_file,
+   ground_truth_data=ground_truth_data
+)
+```
+
+#### Extracted metric Evaluation
+```python
+extracted_metrics={
+    'Revenue Last Year': 0,
+    'Revenue Previous Year': 7701000,
+    'Net Income Last Year': 529000,
+    'Net Income Previous Year': 1025000
+}
+
+ground_truth_metrics={
+    'Revenue Last Year': 7797000,
+    'Revenue Previous Year': 7701000,
+    'Net Income Last Year': 529000,
+    'Net Income Previous Year': 1025000,
+}
+
+DE=DataEvaluation()
+metric_accuracy=DE.evaluate_key_metric_accuracy(
+   extracted_metrics=extracted_metrics,
+   ground_truth_metrics=ground_truth_metrics
+)
+```
+
+#### Summary result Evaluation
+```python
+generated_summary = """
+The company has shown a slight increase in revenue but a notable decrease in net income due to rising 
+operating expenses. .....                                                                                               
+"""
+ground_truth = """
+The company experienced a modest increase in revenue, but a notable decline in net income, primarily driven by 
+rising operating expenses. ....                                                                                             
+"""
+
+DE=DataEvaluation()
+summary_accuracy=DE.evaluate_summary(
+   generated_summary=generated_summary,
+   ground_truth=ground_truth
+)
 ```
 
 ---
