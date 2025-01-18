@@ -1,0 +1,209 @@
+```json
+{
+  "Statement of Comprehensive Income": {
+    "For the year ended 30 June": {
+      "Revenue": {
+        "Membership subscriptions": {
+          "Last Year": 6748000,
+          "Previous Year": 6571000
+        },
+        "Interest": {
+          "Last Year": 251000,
+          "Previous Year": 231000
+        },
+        "Rental income": {
+          "Last Year": 185000,
+          "Previous Year": 244000
+        },
+        "Other revenue": {
+          "Notes": "3A",
+          "Last Year": 613000,
+          "Previous Year": 655000
+        },
+        "Total revenue": {
+          "Last Year": 7797000,
+          "Previous Year": 7701000
+        }
+      },
+      "Expenses": {
+        "Employee expenses": {
+          "Notes": "4A",
+          "Last Year": 3167000,
+          "Previous Year": 3023000
+        },
+        "Capitation fees": {
+          "Notes": "4B",
+          "Last Year": 830000,
+          "Previous Year": 823000
+        },
+        "Affiliation fees": {
+          "Notes": "4C",
+          "Last Year": 228000,
+          "Previous Year": 231000
+        },
+        "Depreciation": {
+          "Notes": "4D",
+          "Last Year": 97000,
+          "Previous Year": 88000
+        },
+        "Administration expenses": {
+          "Notes": "4E",
+          "Last Year": 1649000,
+          "Previous Year": 1475000
+        },
+        "Legal costs": {
+          "Notes": "4F",
+          "Last Year": 296000,
+          "Previous Year": 62000
+        },
+        "Donations": {
+          "Notes": "4G",
+          "Last Year": 77000,
+          "Previous Year": 120000
+        },
+        "Motor vehicle expenses": {
+          "Notes": "4H",
+          "Last Year": 89000,
+          "Previous Year": 79000
+        },
+        "Other expenses": {
+          "Notes": "4I",
+          "Last Year": 835000,
+          "Previous Year": 775000
+        },
+        "Total expenses": {
+          "Last Year": 7268000,
+          "Previous Year": 6676000
+        }
+      },
+      "Surplus (deficit) for the year": {
+        "Last Year": 529000,
+        "Previous Year": 1025000
+      },
+      "Other comprehensive income": {
+        "Gain on revaluation – investment property": {
+          "Last Year": null,
+          "Previous Year": 342000
+        }
+      },
+      "Total comprehensive income for the year": {
+        "Last Year": 529000,
+        "Previous Year": 1367000
+      }
+    }
+  },
+  "Statement of Financial Position": {
+    "As at 30 June": {
+      "Assets": {
+        "Current Assets": {
+          "Cash and cash equivalents": {
+            "Notes": "5A",
+            "Last Year": 3093000,
+            "Previous Year": 4955000
+          },
+          "Trade and other receivables": {
+            "Notes": "5B",
+            "Last Year": 528000,
+            "Previous Year": 226000
+          },
+          "Other current assets": {
+            "Notes": "5C",
+            "Last Year": 408000,
+            "Previous Year": 383000
+          },
+          "Total Current Assets": {
+            "Last Year": 4029000,
+            "Previous Year": 5564000
+          }
+        },
+        "Non-Current Assets": {
+          "Land and buildings": {
+            "Notes": "6A",
+            "Last Year": 10000000,
+            "Previous Year": null
+          },
+          "Plant and equipment": {
+            "Notes": "6B",
+            "Last Year": 104000,
+            "Previous Year": 132000
+          },
+          "Motor vehicles": {
+            "Notes": "6C",
+            "Last Year": 141000,
+            "Previous Year": 147000
+          },
+          "Investment property": {
+            "Notes": "6D",
+            "Last Year": 2170000,
+            "Previous Year": 2000000
+          },
+          "Total Non-Current Assets": {
+            "Last Year": 12415000,
+            "Previous Year": 2279000
+          }
+        },
+        "Total Assets": {
+          "Last Year": 16444000,
+          "Previous Year": 7843000
+        }
+      },
+      "Liabilities": {
+        "Current Liabilities": {
+          "Trade and other payables": {
+            "Notes": "7A",
+            "Last Year": 337000,
+            "Previous Year": 244000
+          },
+          "Employee provisions": {
+            "Notes": "7B",
+            "Last Year": 520000,
+            "Previous Year": 556000
+          },
+          "Total Current Liabilities": {
+            "Last Year": 857000,
+            "Previous Year": 800000
+          }
+        },
+        "Non-Current Liabilities": {
+          "Borrowings": {
+            "Notes": "8A",
+            "Last Year": 8000000,
+            "Previous Year": null
+          },
+          "Employee provisions": {
+            "Notes": "7B",
+            "Last Year": 140000,
+            "Previous Year": 125000
+          },
+          "Total Non-Current Liabilities": {
+            "Last Year": 8140000,
+            "Previous Year": 125000
+          }
+        },
+        "Total Liabilities": {
+          "Last Year": 8997000,
+          "Previous Year": 925000
+        }
+      },
+      "Net Assets": {
+        "Last Year": 7447000,
+        "Previous Year": 6918000
+      },
+      "Equity": {
+        "Retained earnings": {
+          "Last Year": 7105000,
+          "Previous Year": 6576000
+        },
+        "Reserves": {
+          "Last Year": 342000,
+          "Previous Year": 342000
+        },
+        "Total Equity": {
+          "Last Year": 7447000,
+          "Previous Year": 6918000
+        }
+      }
+    }
+  }
+}
+```
