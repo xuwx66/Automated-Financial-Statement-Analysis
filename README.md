@@ -10,9 +10,9 @@ This project automated financial statement analysis by extracting key metrics fr
 2. [Features](#features)
 3. [Directory Structure](#directory-structure)
 4. [Installation](#installation)
-5. [Usage Instructions](#usage-instructions)
-6. [Configuration](#configuration)
-7. [Evaluation](#evaluation)
+5. [Configuration](#configuration)
+6. [Evaluation](#evaluation)
+7. [Usage Instructions](#usage-instructions)
 8. [Contributing](#contributing)
 9. [License](#license)
 
@@ -89,6 +89,30 @@ project/
    ```plaintext
    OPENAI_API_KEY=your_openai_api_key
    ```
+
+---
+
+## Configuration
+
+All configurable parameters are stored in `config.py` or can be set via environment variables. Key settings include:
+- `OPENAI_API_KEY`: Your OpenAI API key.
+- `PDF_FOLDER`: Path to the folder containing input PDFs.
+- `PDF_RAW_TEXT_FOLDER`: Path to store raw extracted text.
+- `MODEL_NAME_*`: Default OpenAI models for different tasks.
+- `SYSTEM_PROMPT_PDF`: Prompt for extracting structured data from PDFs.
+
+---
+
+## Evaluation
+
+The solution includes comprehensive evaluation methods:
+1. **Data Extraction**:
+   - Precision, Recall, and Extraction Score.
+2. **Key Metric Accuracy**:
+   - Mean Absolute Error (MAE), Root Mean Square Error (RMSE), and Exact Match.
+3. **Summary Quality**:
+   - BLEU, ROUGE, and BERTScore.
+   - LLM-based evaluation for fluency, coherence, relevance, and conciseness.
 
 ---
 
@@ -270,30 +294,6 @@ summary_accuracy=DE.evaluate_summary(
    ground_truth=ground_truth
 )
 ```
-
----
-
-## Configuration
-
-All configurable parameters are stored in `config.py` or can be set via environment variables. Key settings include:
-- `OPENAI_API_KEY`: Your OpenAI API key.
-- `PDF_FOLDER`: Path to the folder containing input PDFs.
-- `PDF_RAW_TEXT_FOLDER`: Path to store raw extracted text.
-- `MODEL_NAME_*`: Default OpenAI models for different tasks.
-- `SYSTEM_PROMPT_PDF`: Prompt for extracting structured data from PDFs.
-
----
-
-## Evaluation
-
-The solution includes comprehensive evaluation methods:
-1. **Data Extraction**:
-   - Precision, Recall, and Extraction Score.
-2. **Key Metric Accuracy**:
-   - Mean Absolute Error (MAE), Root Mean Square Error (RMSE), and Exact Match.
-3. **Summary Quality**:
-   - BLEU, ROUGE, and BERTScore.
-   - LLM-based evaluation for fluency, coherence, relevance, and conciseness.
 
 ---
 
