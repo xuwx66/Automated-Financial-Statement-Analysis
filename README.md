@@ -157,7 +157,7 @@ RP = Reports()
 RP.save_to_excel_all(input_file_path=input_file, report_path="./reports")
 ```
 
-#### Extract Financial Metrics into CSV
+#### Extract financial metrics into CSV
 ```python
 from langchain.output_parsers import ResponseSchema
 from reports import Reports
@@ -187,7 +187,7 @@ RP.build_vector_store(input_data=financial_statements)
 relevant_data=RP.financial_data_retriever(user_query=specific_request)
 ```
 
-#### Generate Summary Report for Statement of comprehensive income
+#### Generate summary report for Statement of comprehensive income
 ```python
 input_file="./pdfs_data/your_file.json"
 output_summary_file="./reports/financial_summary_statement_comprehensive_income.txt"
