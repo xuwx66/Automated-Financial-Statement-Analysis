@@ -28,6 +28,7 @@ This project focuses on building a scalable and robust pipeline for **financial 
 6. **Modular Design**  
    - Each step in the pipeline (data ingestion, vector store creation, metric extraction, summary generation, and evaluation) is implemented as a reusable module, ensuring scalability, reusability, and ease of integration.
 
+
 ---
 
 ## **Challenges**
@@ -49,6 +50,7 @@ This project focuses on building a scalable and robust pipeline for **financial 
 
 6. **Ensuring Modular and Reusable Code**  
    - The system needed a modular structure to allow independent use of components (e.g., ingestion, retrieval, or evaluation) and ensure scalability for future financial data projects.
+
 
 ---
 
@@ -74,6 +76,7 @@ This project focuses on building a scalable and robust pipeline for **financial 
      - **Retriever and vector store**: Scalable for large documents, with efficient chunking and retrieval.  
      - **Metric extraction and summaries**: Independent modules that integrate seamlessly with retrieval.  
      - **Evaluation framework**: Modular metrics to assess extraction, numeric accuracy, and summary quality.
+
 
 ---
 
