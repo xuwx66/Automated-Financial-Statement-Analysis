@@ -1,0 +1,32 @@
+### Financial Summary Report
+
+#### Key Financial Metrics:
+- **Revenue:**
+  - Total revenue increased slightly from $7,701,000 in the previous year to $7,797,000 last year.
+  - Membership subscriptions rose from $6,571,000 to $6,748,000.
+  - Interest income increased from $231,000 to $251,000.
+  - Rental income decreased from $244,000 to $185,000.
+  - Other revenue decreased from $655,000 to $613,000.
+
+- **Expenses:**
+  - Total expenses increased from $6,676,000 to $7,268,000.
+  - Employee expenses rose from $3,023,000 to $3,167,000.
+  - Legal costs saw a significant increase from $62,000 to $296,000.
+  - Administration expenses increased from $1,475,000 to $1,649,000.
+
+- **Surplus (Deficit) for the Year:**
+  - The surplus decreased from $1,025,000 in the previous year to $529,000 last year.
+
+- **Other Comprehensive Income:**
+  - There was no gain on revaluation of investment property last year, compared to a gain of $342,000 in the previous year.
+
+- **Total Comprehensive Income:**
+  - Total comprehensive income decreased from $1,367,000 to $529,000.
+
+#### Notable Trends and Observations:
+- The company experienced a modest increase in total revenue, primarily driven by higher membership subscriptions and interest income.
+- There was a notable increase in total expenses, particularly in legal and administration costs, which contributed to a reduced surplus for the year.
+- The absence of a gain on revaluation of investment property last year, which was present in the previous year, also impacted the total comprehensive income negatively.
+
+#### Narrative Summary:
+The financial performance of the company for the year ended 30 June shows a slight increase in total revenue, mainly due to higher membership subscriptions and interest income. However, this was offset by a significant rise in expenses, particularly in legal and administration costs, leading to a reduced surplus compared to the previous year. The absence of gains from investment property revaluation further contributed to a decline in total comprehensive income. Overall, while revenue growth is positive, the increase in expenses and lack of additional income from property revaluation have impacted the company's financial health.
