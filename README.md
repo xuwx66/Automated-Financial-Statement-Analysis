@@ -77,7 +77,7 @@ project/
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/xuwx66/Financial-Statement-Analysis.git
+   git clone https://github.com/xuwx66/Automated-Financial-Statement-Analysis.git
    cd project
    ```
 
