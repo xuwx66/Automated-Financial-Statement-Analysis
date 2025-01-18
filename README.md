@@ -23,6 +23,7 @@ This project automated financial statement analysis by extracting key metrics fr
 This project aims to build an **end-to-end pipeline** for **financial data extraction**, **key metric retrieval**, **summary generation**, and **evaluation**. Specifically, it aims to:
 - **Extract** structured information from raw or partially structured financial statements (PDFs).
 - **Identify and convert** core financial metrics (e.g., revenue, net income) into numeric values, ensuring accuracy.
+- **Handle large or lengthy financial statements** by using a **retriever mechanism** to extract the most relevant information for downstream tasks.
 - **Generate** a concise **narrative summary** describing the organization’s financial health, supported by relevant data.
 - **Evaluate** the effectiveness of each step (data extraction, metric accuracy, and summary quality) using a set of performance metrics (e.g., partial precision/recall, MAE, RMSE, exact-match F1).
 
@@ -102,19 +103,15 @@ Run `DataIngestion` from `data_ingestion.py` script to extract raw text:
 #### Extract Text from a Single PDF File
 ```python
 from data_ingestion import DataIngestion
-
 DI = DataIngestion()
-pdf_path = "./pdfs/your_pdf_file.pdf"
+pdf_path = "./pdfs/your_file.pdf"
 DI.extract_text_from_pdf(pdf_path)
 ```
 
 #### Extract Text from PDFs in a List
 ```python
 DI = DataIngestion()
-pdf_path_list = [
-    "./pdfs/your_pdf_file1.pdf",
-    "./pdfs/your_pdf_file2.pdf",
-]
+pdf_path_list = ["./pdfs/your_file1.pdf", "./pdfs/your_file2.pdf"]
 DI.extract_text_from_pdf_list(pdf_path_list)
 ```
 
@@ -131,7 +128,6 @@ Convert the raw text into structured output using `DataProcessing` from `data_pr
 #### Process Extracted Text from a Single Folder
 ```python
 from data_processing import DataProcessing
-
 DP = DataProcessing()
 input_text_folder = "./raw_texts/your_file"
 DP.data_processing(input_text_folder)
@@ -140,7 +136,7 @@ DP.data_processing(input_text_folder)
 #### Process Extracted Text from a List of Folders
 ```python
 DP = DataProcessing()
-input_text_folder_list = ["./raw_texts/your_file"]
+input_text_folder_list = ["./raw_texts/your_file1", "./raw_texts/your_file2"]
 DP.data_processing_list(input_text_folder_list)
 ```
 
@@ -181,29 +177,42 @@ key_metrics = RP.extract_financial_metrics(
 )
 ```
 
-#### Generate Summary Report
+#### Retrieve relevant Info/Data from `Large statements` using RAG
 ```python
-from rich.markdown import Markdown
-input_file="./pdfs_data/fwc_sample_financial_statement.json"
-output_summary_file="./reports/financial_summary.txt"
-RP=Reports()
-financial_statements=RP.extract_data_from_json(input_file)
-financial_summary=RP.generate_financial_summary(
-    key_metrics=key_metrics, 
-    financial_data=financial_statements,
-    add_request=None,
-    output_file=output_summary_file
-)
-```
-
-#### Relevant Info/Data retrieval for `Large statements`
-```python
-input_file="./pdfs_data/Large_statements.json"
+input_file="./pdfs_data/large_statements.json"
 specific_request="add if you have..."
 RP=Reports()
 financial_statements=RP.extract_data_from_json(input_file)
 RP.build_vector_store(input_data=financial_statements)
 relevant_data=RP.financial_data_retriever(user_query=specific_request)
+```
+
+#### Generate Summary Report for Statement of comprehensive income
+```python
+input_file="./pdfs_data/your_file.json"
+output_summary_file="./reports/financial_summary_statement_comprehensive_income.txt"
+RP=Reports()
+financial_statements=RP.extract_data_from_json(input_file)
+financial_summary=RP.generate_financial_summary(
+    key_metrics=None,
+    financial_data=financial_statements,
+    add_request="Generate summary report based on Statement of comprehensive income",
+    output_file=output_summary_file
+)
+```
+
+#### Generate summary report based on the provided metric
+```python
+input_file="./pdfs_data/your_file.json"
+output_summary_file="./reports/financial_summary.txt"
+RP=Reports()
+financial_statements=RP.extract_data_from_json(input_file)
+financial_summary=RP.generate_financial_summary(
+    key_metrics=key_metrics, 
+    financial_data=None,
+    add_request=None,
+    output_file=output_summary_file
+)
 ```
 
 ### 5. Evaluate the Solution
@@ -213,13 +222,11 @@ Run `DataEvaluation` from `data_evaluation.py` to evaluate the data extraction a
 ```python
 extracted_data_file="./pdfs_data/your_file.json"
 ground_truth_data={
-    "Revenue": {"Membership subscriptions": {"Last Year": 6748000, "Previous Year": 6571000}, 
-    "Interest": {"Last Year": 251000, "Previous Year": 231000}, 
-    "Rental income": {"Last Year": 185000, "Previous Year": 244000}, 
-    "Other revenue": {"Notes": "3A", "Last Year": 613000, "Previous Year": 655000}, 
-    "Total revenue": {"Last Year": 7797000, "Previous Year": "xxxxxx"}} 
+    "Revenue": {"Last Year": 2222, "Previous Year": 1111}, 
+    "Interest": {"Last Year": 3333, "Previous Year": 2222}, 
+    "Rental income": {"Last Year": 4444, "Previous Year": 3333}, 
+...
 }
-
 DE=DataEvaluation()
 eval_data_extraction=DE.evaluate_data_extraction(
    extracted_data=extracted_data_file,
@@ -230,19 +237,16 @@ eval_data_extraction=DE.evaluate_data_extraction(
 #### Extracted metric Evaluation
 ```python
 extracted_metrics={
-    'Revenue Last Year': 0,
-    'Revenue Previous Year': 7701000,
-    'Net Income Last Year': 529000,
-    'Net Income Previous Year': 1025000
+    'Revenue Last Year': 4444,
+    'Revenue Previous Year': 3333,
+......
 }
 
 ground_truth_metrics={
-    'Revenue Last Year': 7797000,
-    'Revenue Previous Year': 7701000,
-    'Net Income Last Year': 529000,
-    'Net Income Previous Year': 1025000,
+    'Revenue Last Year': 4444,
+    'Revenue Previous Year': 3332,
+......
 }
-
 DE=DataEvaluation()
 metric_accuracy=DE.evaluate_key_metric_accuracy(
    extracted_metrics=extracted_metrics,
@@ -260,7 +264,6 @@ ground_truth = """
 The company experienced a modest increase in revenue, but a notable decline in net income, primarily driven by 
 rising operating expenses. ....                                                                                             
 """
-
 DE=DataEvaluation()
 summary_accuracy=DE.evaluate_summary(
    generated_summary=generated_summary,
