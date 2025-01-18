@@ -60,6 +60,8 @@ project/
 │
 ├── requirements.txt            # Dependencies list.
 ├── README.md                   # Project instructions and setup guide.
+├── Documentation.md            # A concise report describing the approach, challenges faced, and solutions implemented
+├── allinone.ipynb              # Jupyter Notebook including code, usecase and examples
 └── .env                        # Environment variables (optional).
 ```
 
