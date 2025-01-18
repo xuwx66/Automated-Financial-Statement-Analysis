@@ -1,4 +1,4 @@
-# Financial Statement Analysis Using LLM
+# Automated Financial Statement Analysis Using LLM
 
 This project automated financial statement analysis by extracting key metrics from PDFs and generating comprehensive summaries using LLM. It provides an end-to-end solution for data extraction, processing, evaluation, and reporting.
 
