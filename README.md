@@ -90,6 +90,7 @@ project/
    Create a `.env` file in the project root and add your configuration:
    ```plaintext
    OPENAI_API_KEY=your_openai_api_key
+   *Other configuration*
    ```
 
 ---
