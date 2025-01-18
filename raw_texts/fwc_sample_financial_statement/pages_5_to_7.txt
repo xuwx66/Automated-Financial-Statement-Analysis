@@ -1,0 +1,155 @@
+```json
+{
+  "Statement of Changes in Equity": {
+    "For the year ended 30 June": {
+      "Asset": {
+        "Revaluation Reserve": {
+          "Balance as at 1 July previous year": 0,
+          "Revaluation increment": 342000,
+          "Profit for the year": 0,
+          "Closing balance as at 30 June previous year": 342000,
+          "Revaluation increment": 0,
+          "Profit for the year": 0,
+          "Closing balance as at 30 June last year": 342000
+        },
+        "Retained Earnings": {
+          "Balance as at 1 July previous year": 6186000,
+          "Revaluation increment": 0,
+          "Profit for the year": 1367000,
+          "Closing balance as at 30 June previous year": 6576000,
+          "Revaluation increment": 0,
+          "Profit for the year": 529000,
+          "Closing balance as at 30 June last year": 7105000
+        },
+        "Total": {
+          "Balance as at 1 July previous year": 5209000,
+          "Revaluation increment": 342000,
+          "Profit for the year": 1367000,
+          "Closing balance as at 30 June previous year": 6918000,
+          "Revaluation increment": 0,
+          "Profit for the year": 529000,
+          "Closing balance as at 30 June last year": 7447000
+        }
+      }
+    }
+  },
+  "Statement of Cash Flows": {
+    "For the year ended 30 June": {
+      "Cash Flows from Operating Activities": {
+        "Cash Received": {
+          "Receipts from members": {
+            "Last Year": 7007000,
+            "Previous Year": 6903000
+          },
+          "Interest": {
+            "Last Year": 251000,
+            "Previous Year": 231000
+          },
+          "Rental": {
+            "Last Year": 314000,
+            "Previous Year": 379000
+          },
+          "Other": {
+            "Last Year": 373000,
+            "Previous Year": 294000
+          },
+          "Total Cash Received": {
+            "Last Year": 7945000,
+            "Previous Year": 7807000
+          }
+        },
+        "Cash Used": {
+          "Employees": {
+            "Last Year": -2824000,
+            "Previous Year": -2695000
+          },
+          "Suppliers": {
+            "Last Year": -4585000,
+            "Previous Year": -4210000
+          },
+          "Total Cash Used": {
+            "Last Year": -7409000,
+            "Previous Year": -6905000
+          }
+        },
+        "Net Cash from Operating Activities": {
+          "Last Year": 536000,
+          "Previous Year": 902000
+        }
+      },
+      "Investing Activities": {
+        "Cash Received": {
+          "Proceeds from sale of plant and equipment": {
+            "Last Year": 9000,
+            "Previous Year": 56000
+          },
+          "Total Cash Received": {
+            "Last Year": 9000,
+            "Previous Year": 56000
+          }
+        },
+        "Cash Used": {
+          "Purchase of land and buildings": {
+            "Last Year": -10000000,
+            "Previous Year": 0
+          },
+          "Purchase of plant and equipment": {
+            "Last Year": -234000,
+            "Previous Year": -156000
+          },
+          "Purchase of investments": {
+            "Last Year": -173000,
+            "Previous Year": 0
+          },
+          "Total Cash Used": {
+            "Last Year": -10407000,
+            "Previous Year": -156000
+          }
+        },
+        "Net Cash from Investing Activities": {
+          "Last Year": -10398000,
+          "Previous Year": -100000
+        }
+      },
+      "Financing Activities": {
+        "Cash Received": {
+          "Borrowings": {
+            "Last Year": 8000000,
+            "Previous Year": 0
+          },
+          "Total Cash Received": {
+            "Last Year": 8000000,
+            "Previous Year": 0
+          }
+        },
+        "Cash Used": {
+          "Repayment of borrowings": {
+            "Last Year": 0,
+            "Previous Year": 0
+          },
+          "Total Cash Used": {
+            "Last Year": 0,
+            "Previous Year": 0
+          }
+        },
+        "Net Cash from Financing Activities": {
+          "Last Year": 8000000,
+          "Previous Year": 0
+        }
+      },
+      "Net Increase/(Decrease) in Cash Held": {
+        "Last Year": -1862000,
+        "Previous Year": 802000
+      },
+      "Cash and Cash Equivalents at the Beginning of the Reporting Period": {
+        "Last Year": 4955000,
+        "Previous Year": 4153000
+      },
+      "Cash and Cash Equivalents at the End of the Reporting Period": {
+        "Last Year": 3093000,
+        "Previous Year": 4955000
+      }
+    }
+  }
+}
+```
