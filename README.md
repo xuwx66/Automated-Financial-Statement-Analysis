@@ -103,6 +103,7 @@ All configurable parameters are stored in `config.py` or can be set via environm
 - `PDF_RAW_TEXT_FOLDER`: Path to store raw extracted text.
 - `MODEL_NAME_*`: Default OpenAI models for different tasks.
 - `SYSTEM_PROMPT_PDF`: Prompt for extracting structured data from PDFs.
+- ......
 
 ---
 
