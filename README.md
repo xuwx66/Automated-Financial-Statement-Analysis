@@ -8,7 +8,7 @@ This project automated financial statement analysis by extracting key metrics fr
 
 1. [Overview](#overview)
 2. [Features](#features)
-3. [Directory Structure](#directory-structure)
+3. [Work Directory Structure](#directory-structure)
 4. [Installation](#installation)
 5. [Configuration](#configuration)
 6. [Evaluation](#evaluation)
@@ -41,7 +41,8 @@ It employs **LangChain**, **OpenAI**, and other NLP techniques for accurate and 
 
 ---
 
-## Directory Structure
+## Workflow and Directory Structure
+![Workflow Diagram](images/workflow.png) 
 
 ```
 project/
