@@ -205,7 +205,7 @@ key_metrics = RP.extract_financial_metrics(
 )
 ```
 
-#### Retrieve relevant Info/Data from `Large statements` using RAG
+#### Retrieve relevant Info/Data from `Large statements` using (Retriever-Based Context Augmentation)
 ```python
 input_file="./pdfs_data/large_statements.json"
 specific_request="add if you have..."
