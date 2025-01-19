@@ -185,6 +185,16 @@ RP = Reports()
 RP.save_to_excel_all(input_file_path=input_file, report_path="./reports")
 ```
 
+#### Retrieve relevant Info/Data from `Large statements` using (Retriever-Based Context Augmentation)
+```python
+input_file="./pdfs_data/large_statements.json"
+specific_request="add if you have..."
+RP=Reports()
+financial_statements=RP.extract_data_from_json(input_file)
+RP.build_vector_store(input_data=financial_statements)
+relevant_data=RP.financial_data_retriever(user_query=specific_request)
+```
+
 #### Extract financial metrics into CSV
 ```python
 from langchain.output_parsers import ResponseSchema
@@ -200,31 +210,22 @@ output_file = "./reports/key_metrics.csv"
 RP = Reports()
 key_metrics = RP.extract_financial_metrics(
    metrics_schemas=metrics_schemas,
-   data_input=input_file,
+   data_input=input_file, ## or the retrieved data
    csv_file=output_file
 )
-```
-
-#### Retrieve relevant Info/Data from `Large statements` using (Retriever-Based Context Augmentation)
-```python
-input_file="./pdfs_data/large_statements.json"
-specific_request="add if you have..."
-RP=Reports()
-financial_statements=RP.extract_data_from_json(input_file)
-RP.build_vector_store(input_data=financial_statements)
-relevant_data=RP.financial_data_retriever(user_query=specific_request)
 ```
 
 #### Generate summary report for Statement of comprehensive income
 ```python
 input_file="./pdfs_data/your_file.json"
-output_summary_file="./reports/financial_summary_statement_comprehensive_income.txt"
+output_summary_file="./reports/financial_summary_income_position.txt"
 RP=Reports()
 financial_statements=RP.extract_data_from_json(input_file)
 financial_summary=RP.generate_financial_summary(
     key_metrics=None,
     financial_data=financial_statements,
-    add_request="Generate summary report based on Statement of comprehensive income",
+    add_request="Generate summary report based on Generate summary report based on Statement of comprehensive income
+                  and Statement of financial position", # based on singel or multi statements
     output_file=output_summary_file
 )
 ```
@@ -260,7 +261,14 @@ eval_data_extraction=DE.evaluate_data_extraction(
    extracted_data=extracted_data_file,
    ground_truth_data=ground_truth_data
 )
+
+#Output example
+Data Extraction Accuracy:
+  partial_precision: 1.0
+  partial_recall: 0.9565217391304348
+  extraction_score: 0.9782608695652174
 ```
+
 
 #### Extracted metric Evaluation
 ```python
@@ -280,6 +288,15 @@ metric_accuracy=DE.evaluate_key_metric_accuracy(
    extracted_metrics=extracted_metrics,
    ground_truth_metrics=ground_truth_metrics
 )
+
+#Output example
+Key Metric Extraction Accuracy:
+  mae: 974625.0
+  rmse: 2756655.7864557556
+  accuracy_score: 0.32005776988203594
+  exact_match_precision: 0.875
+  exact_match_recall: 0.875
+  exact_match_f1: 0.875#
 ```
 
 #### Summary result Evaluation
@@ -297,6 +314,32 @@ summary_accuracy=DE.evaluate_summary(
    generated_summary=generated_summary,
    ground_truth=ground_truth
 )
+
+#Output example
+Summary Report Accuracy:
+  BLEU: 0.33644277918974813
+  ROUGE-1: 0.8160919540229885
+  ROUGE-2: 0.5581395348837209
+  ROUGE-L: 0.7586206896551724
+  BERTScore-Precision: 0.9605397582054138
+  BERTScore-Recall: 0.9528236389160156
+  BERTScore-F1: 0.956666111946106
+
+LLM_Evaluation - Detailed Evaluation:
+  1. Fluency: 9/10
+  The language in the generated summary is clear.....
+  
+  2. Coherence: 9/10
+  The summary logically flows and connects relevant points effectively. ....
+
+  3. Relevance: 10/10
+  The generated summary accurately reflects the key financial information and metrics ....
+  
+  4. Conciseness: 10/10
+  The summary is brief yet comprehensive, covering all necessary points....
+  
+  Overall Evaluation:
+  The generated summary is of high quality, effectively capturing the essence of the financial ....
 ```
 
 ---
