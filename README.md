@@ -215,7 +215,7 @@ key_metrics = RP.extract_financial_metrics(
 )
 ```
 
-#### Generate summary report for Statement of comprehensive income
+#### Generate summary report for singel or multi statements
 ```python
 input_file="./pdfs_data/your_file.json"
 output_summary_file="./reports/financial_summary_income_position.txt"
